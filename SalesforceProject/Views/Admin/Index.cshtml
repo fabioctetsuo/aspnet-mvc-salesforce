@@ -1,0 +1,36 @@
+﻿@model SalesforceProject.Models.Usuario
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="login-form-container">
+    <div class="col-lg-12">
+        <div class="well">
+            <h2>Login</h2>
+            @using (Html.BeginForm("Login", "Admin", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label class="control-label" for="nome">Usuário:</label>
+                    @Html.TextBoxFor(model => model.EmailUsuario, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="email">Senha:</label>
+                    @Html.PasswordFor(model => model.SenhaUsuario, new { @class = "form-control" })
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+            }
+            @if (TempData["mensagem"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["mensagem"]
+                </div>
+            }
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+
+

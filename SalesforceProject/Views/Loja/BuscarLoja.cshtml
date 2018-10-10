@@ -1,0 +1,86 @@
+﻿@model SalesforceProject.ViewModels.LojaViewModel
+@{
+    ViewBag.Title = "BuscarLoja";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="lojas-container">
+    <!-- Heading Row -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <h1>Pontos de Venda</h1>
+            <!-- Jumbotron Header -->
+            <header class="jumbotron jumbotron-search my-4">
+                @using (Html.BeginForm("BuscarLoja", "Loja", FormMethod.Post, new { @class = "form-inline col-md-12" }))
+                {
+                    @Html.LabelFor(model => model.Loja.Endereco, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.Loja.Endereco, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                    @Html.LabelFor(model => model.Loja.Cidade, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-2">
+                        @Html.EditorFor(model => model.Loja.Cidade, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                    @Html.LabelFor(model => model.Loja.Estado, htmlAttributes: new { @class = "control-label" })
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(model => model.Loja.Estado, Model.ListaEstados, "Selecione o Estado", new { @class = "form-control col-md-12" })
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="form-control btn btn-primary">Buscar</button>
+                    </div>
+                }
+            </header>
+
+            <p class="toolbar">
+                @Html.ActionLink("Novo Ponto de Venda", "Inserir", new object { }, new { @class = "create btn btn-primary" })
+                <br />
+                @if (TempData["mensagem"] != null)
+                {
+                    <div class="alert alert-success" role="alert">
+                        @TempData["mensagem"]
+                    </div>
+                }
+            </p>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-sm" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th data-field="name">@Html.DisplayNameFor(model => Model.Loja.Nome)</th>
+                            <th data-field="forks_count">@Html.DisplayNameFor(model => Model.Loja.Endereco)</th>
+                            <th data-field="description">@Html.DisplayNameFor(model => Model.Loja.Numero)</th>
+                            <th data-field="name">@Html.DisplayNameFor(model => Model.Loja.Cidade)</th>
+                            <th data-field="name">@Html.DisplayNameFor(model => Model.Loja.Estado)</th>
+                            <th class="actions" width="220">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model.Lojas)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Endereco)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Numero)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Cidade)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                                <td class="actions">
+                                    @Html.ActionLink("Visualizar", "Consultar", new { id = item.IdLoja }, new { @class = "btn btn-success btn-sm" })
+                                    @Html.ActionLink("Editar", "Editar", new { id = item.IdLoja }, new { @class = "btn btn-warning btn-sm" })
+                                    @Html.ActionLink("Excluir", "Excluir", new { id = item.IdLoja }, new { @class = "btn btn-danger btn-sm" })
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+        <!-- /.col-md-4 -->
+    </div>
+</div>
+

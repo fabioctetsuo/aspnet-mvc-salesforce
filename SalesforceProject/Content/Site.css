@@ -1,0 +1,79 @@
+﻿html {
+    height: 100%;
+}
+body {
+    padding-top: 50px;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 50px;
+    padding: 15px;
+    margin-bottom: 50px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #efefef;
+    text-align: center;
+}
+
+.card {
+    height: 400px;
+}
+
+.card-title {
+    color: dodgerblue;
+}
+
+.card-subtitle  {
+    margin-top: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.card-text {
+    text-align: left;
+}
+
+.jumbotron-search {
+    padding: 10px 50px 10px;
+}
+
+.login-form-container {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+}
+
+.lojas-container {
+    margin-top: 50px;
+    width: 100%;
+}
